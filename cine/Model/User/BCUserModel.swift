@@ -24,6 +24,8 @@ public class BCUserModel: CBaseModel{
                 return
             }
             _token = newValue
+            NotificationCenter.default.post(name: kNotificationChangeUserStatus, object: nil)
+            UserDefaults.standard.set(newValue, forKey: "BSTCINE_TOKEN")
         }
     }
     public var userName : String{
@@ -71,7 +73,6 @@ public class BCUserModel: CBaseModel{
         }
     }
     
-    public var phone_code : String = ""
     public var phone : String = ""
     
     public static let shared = BCUserModel()
@@ -84,7 +85,7 @@ public class BCUserModel: CBaseModel{
     public override init() {
         super.init()
         
-        _token = UserDefaults.standard.string(forKey: "BSTCINE_TOKEN") ?? ""
+//        _token = UserDefaults.standard.string(forKey: "BSTCINE_TOKEN") ?? ""
         _userName = UserDefaults.standard.string(forKey: "BSTCINE_USERNAME") ?? ""
         _userId = UserDefaults.standard.string(forKey: "BESTCINE_USERID") ?? "BestcineEducation"
         _login = UserDefaults.standard.string(forKey: "BESTCINE_LOGIN") ?? ""
@@ -95,7 +96,6 @@ public class BCUserModel: CBaseModel{
         
         userId = keyedValues["id"] as? String ?? ""
         login = keyedValues["login"] as? String ?? ""
-        phone_code = keyedValues["phone_code"] as? String ?? ""
         phone = keyedValues["phone"] as? String ?? ""
     }
 }

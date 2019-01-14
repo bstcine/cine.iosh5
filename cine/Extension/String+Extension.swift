@@ -46,6 +46,11 @@ extension String {
         return self.removingPercentEncoding
     }
 }
+extension NSString {
+    @objc public var MD5String:NSString {
+        return String(self).MD5String
+    }
+}
 /**
  * @ 字符串转换为数值的封装
  * @ 均为只读属性

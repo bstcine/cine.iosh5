@@ -11,7 +11,8 @@ import Foundation
 /// H5网页相对路径
 public enum H5_URL_PATH:String {
     case courseDetail = "/content/course"      // 课程详情
-    case market = "/"                   // 商城主页
+    case market = "/"                          // 商城主页
+    case mine = "/user"                        // 用户信息
     case learn = "/learn"                      // 学习首页
     case address = "/address"                  // 个人地址
     case vocabReport = "/quizvocab/reportlist" // 词汇量测试结果
@@ -59,6 +60,7 @@ public enum H5InvokeNativeFunction:String {
     case sendImg = "send_img"
     case openBrowser = "open_browser"
     case pay = "app_pay"
+    case showPayment = "showPayment"
     case paySuccess = "order_pay_success"
     case play = "play"
     case learn = "learn"
@@ -68,6 +70,7 @@ public enum NativeInvokeH5Func:String {
     case share = "outer_share"
     case pagehide = "pagehide"
     case pageshow = "pageshow"
+    case test = "android_call_h5_test"
 }
 public enum windowType:String {
     case requestFullscreen = "requestFullscreen"

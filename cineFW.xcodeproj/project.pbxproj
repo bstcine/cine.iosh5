@@ -40,9 +40,31 @@
 		F506347B21E7473400133270 /* CConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506347A21E7473400133270 /* CConfig.swift */; };
 		F506347D21E749FB00133270 /* CNetworkConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F506347C21E749FB00133270 /* CNetworkConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F50634B421E74A4900133270 /* BCUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506349621E74A4900133270 /* BCUserModel.swift */; };
-		F50634B521E74A4900133270 /* BCRegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506349721E74A4900133270 /* BCRegionModel.swift */; };
 		F50634B821E74A4900133270 /* CBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506349B21E74A4900133270 /* CBaseModel.swift */; };
 		F50634BE21E74A9B00133270 /* CNotificationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50634BD21E74A9B00133270 /* CNotificationConfig.swift */; };
+		F518710521EC24D2008BBA80 /* BCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710221EC24D1008BBA80 /* BCTextField.swift */; };
+		F518710621EC24D2008BBA80 /* BCLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710321EC24D1008BBA80 /* BCLoginVC.swift */; };
+		F518710721EC24D2008BBA80 /* BCLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710421EC24D1008BBA80 /* BCLoginView.swift */; };
+		F518710921EC2809008BBA80 /* CColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710821EC2809008BBA80 /* CColorConfig.swift */; };
+		F518712321EC640D008BBA80 /* CAPICacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711221EC640D008BBA80 /* CAPICacheManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518712421EC640D008BBA80 /* CAPICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711321EC640D008BBA80 /* CAPICacheManager.m */; };
+		F518712521EC640D008BBA80 /* CPage.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711521EC640D008BBA80 /* CPage.m */; };
+		F518712621EC640D008BBA80 /* CError.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711621EC640D008BBA80 /* CError.m */; };
+		F518712721EC640D008BBA80 /* CHttpFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711721EC640D008BBA80 /* CHttpFilter.m */; };
+		F518712821EC640D008BBA80 /* CPage.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711821EC640D008BBA80 /* CPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518712921EC640D008BBA80 /* CHttpFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711921EC640D008BBA80 /* CHttpFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518712A21EC640D008BBA80 /* CError.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711A21EC640D008BBA80 /* CError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518712C21EC640D008BBA80 /* CNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711D21EC640D008BBA80 /* CNetwork.m */; };
+		F518712D21EC640D008BBA80 /* CRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711E21EC640D008BBA80 /* CRequestManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518712E21EC640D008BBA80 /* CRequestParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711F21EC640D008BBA80 /* CRequestParseManager.m */; };
+		F518712F21EC640D008BBA80 /* CNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = F518712021EC640D008BBA80 /* CNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518713021EC640D008BBA80 /* CRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F518712121EC640D008BBA80 /* CRequestManager.m */; };
+		F518713121EC640D008BBA80 /* CRequestParseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F518712221EC640D008BBA80 /* CRequestParseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F518713421EC6AA7008BBA80 /* BCAuthLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713321EC6AA7008BBA80 /* BCAuthLogic.swift */; };
+		F518713621EC6BD6008BBA80 /* CAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713521EC6BD6008BBA80 /* CAPI.swift */; };
+		F518713821EC6DF2008BBA80 /* BCWebVC+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713721EC6DF2008BBA80 /* BCWebVC+Refresh.swift */; };
+		F518713A21EC6E90008BBA80 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713921EC6E8F008BBA80 /* UIScrollView+Extension.swift */; };
+		F518713C21EC8506008BBA80 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713B21EC8506008BBA80 /* UIAlertController+Extension.swift */; };
 		F5679D9521E8324D00E91A80 /* BCProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679D9021E8324D00E91A80 /* BCProgressLayer.swift */; };
 		F5679D9721E8324D00E91A80 /* BCProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679D9221E8324D00E91A80 /* BCProgressView.swift */; };
 		F5679DAD21E8466700E91A80 /* WXApiManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F5679D9C21E8466700E91A80 /* WXApiManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,10 +79,12 @@
 		F5679DB621E8466700E91A80 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5679DA521E8466700E91A80 /* AlipaySDK.framework */; };
 		F5679DE921E8478900E91A80 /* BCUtilLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DD221E8478900E91A80 /* BCUtilLogic.swift */; };
 		F5679DEC21E8478900E91A80 /* BCBaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DD621E8478900E91A80 /* BCBaseLogic.swift */; };
-		F5679DF221E848BD00E91A80 /* BCShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF021E848BC00E91A80 /* BCShareModel.swift */; };
-		F5679DF321E848BD00E91A80 /* BCShareResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF121E848BC00E91A80 /* BCShareResultModel.swift */; };
 		F5679DF621E84BB300E91A80 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF421E84BB300E91A80 /* UIImage+Extension.swift */; };
 		F5679DF721E84BB300E91A80 /* UIImage+Wechat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF521E84BB300E91A80 /* UIImage+Wechat.swift */; };
+		F5679DFC21E899F200E91A80 /* BCPWAVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DFB21E899F200E91A80 /* BCPWAVC.swift */; };
+		F5679DFF21E89B2000E91A80 /* BCMarketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DFE21E89B2000E91A80 /* BCMarketVC.swift */; };
+		F5679E0321E89C2E00E91A80 /* BCMineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679E0221E89C2E00E91A80 /* BCMineVC.swift */; };
+		F5679E0521E89C3800E91A80 /* BCStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679E0421E89C3800E91A80 /* BCStudyVC.swift */; };
 		F5EC6D2E21E47C0100844300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC6D2D21E47C0100844300 /* AppDelegate.swift */; };
 		F5EC6D3521E47C0300844300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5EC6D3421E47C0300844300 /* Assets.xcassets */; };
 		F5EC6D6021E47C9200844300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC6D5F21E47C9200844300 /* AppDelegate.swift */; };
@@ -132,9 +156,31 @@
 		F506347A21E7473400133270 /* CConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConfig.swift; sourceTree = "<group>"; };
 		F506347C21E749FB00133270 /* CNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNetworkConfig.h; sourceTree = "<group>"; };
 		F506349621E74A4900133270 /* BCUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCUserModel.swift; sourceTree = "<group>"; };
-		F506349721E74A4900133270 /* BCRegionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCRegionModel.swift; sourceTree = "<group>"; };
 		F506349B21E74A4900133270 /* CBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBaseModel.swift; sourceTree = "<group>"; };
 		F50634BD21E74A9B00133270 /* CNotificationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNotificationConfig.swift; sourceTree = "<group>"; };
+		F518710221EC24D1008BBA80 /* BCTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCTextField.swift; sourceTree = "<group>"; };
+		F518710321EC24D1008BBA80 /* BCLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCLoginVC.swift; sourceTree = "<group>"; };
+		F518710421EC24D1008BBA80 /* BCLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCLoginView.swift; sourceTree = "<group>"; };
+		F518710821EC2809008BBA80 /* CColorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CColorConfig.swift; sourceTree = "<group>"; };
+		F518711221EC640D008BBA80 /* CAPICacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPICacheManager.h; sourceTree = "<group>"; };
+		F518711321EC640D008BBA80 /* CAPICacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPICacheManager.m; sourceTree = "<group>"; };
+		F518711521EC640D008BBA80 /* CPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPage.m; sourceTree = "<group>"; };
+		F518711621EC640D008BBA80 /* CError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CError.m; sourceTree = "<group>"; };
+		F518711721EC640D008BBA80 /* CHttpFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHttpFilter.m; sourceTree = "<group>"; };
+		F518711821EC640D008BBA80 /* CPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPage.h; sourceTree = "<group>"; };
+		F518711921EC640D008BBA80 /* CHttpFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHttpFilter.h; sourceTree = "<group>"; };
+		F518711A21EC640D008BBA80 /* CError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CError.h; sourceTree = "<group>"; };
+		F518711D21EC640D008BBA80 /* CNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNetwork.m; sourceTree = "<group>"; };
+		F518711E21EC640D008BBA80 /* CRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRequestManager.h; sourceTree = "<group>"; };
+		F518711F21EC640D008BBA80 /* CRequestParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRequestParseManager.m; sourceTree = "<group>"; };
+		F518712021EC640D008BBA80 /* CNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNetwork.h; sourceTree = "<group>"; };
+		F518712121EC640D008BBA80 /* CRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRequestManager.m; sourceTree = "<group>"; };
+		F518712221EC640D008BBA80 /* CRequestParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRequestParseManager.h; sourceTree = "<group>"; };
+		F518713321EC6AA7008BBA80 /* BCAuthLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCAuthLogic.swift; sourceTree = "<group>"; };
+		F518713521EC6BD6008BBA80 /* CAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPI.swift; sourceTree = "<group>"; };
+		F518713721EC6DF2008BBA80 /* BCWebVC+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCWebVC+Refresh.swift"; sourceTree = "<group>"; };
+		F518713921EC6E8F008BBA80 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		F518713B21EC8506008BBA80 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		F5679D9021E8324D00E91A80 /* BCProgressLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCProgressLayer.swift; sourceTree = "<group>"; };
 		F5679D9221E8324D00E91A80 /* BCProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCProgressView.swift; sourceTree = "<group>"; };
 		F5679D9C21E8466700E91A80 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
@@ -149,10 +195,12 @@
 		F5679DA521E8466700E91A80 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		F5679DD221E8478900E91A80 /* BCUtilLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCUtilLogic.swift; sourceTree = "<group>"; };
 		F5679DD621E8478900E91A80 /* BCBaseLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCBaseLogic.swift; sourceTree = "<group>"; };
-		F5679DF021E848BC00E91A80 /* BCShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCShareModel.swift; sourceTree = "<group>"; };
-		F5679DF121E848BC00E91A80 /* BCShareResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCShareResultModel.swift; sourceTree = "<group>"; };
 		F5679DF421E84BB300E91A80 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		F5679DF521E84BB300E91A80 /* UIImage+Wechat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Wechat.swift"; sourceTree = "<group>"; };
+		F5679DFB21E899F200E91A80 /* BCPWAVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCPWAVC.swift; sourceTree = "<group>"; };
+		F5679DFE21E89B2000E91A80 /* BCMarketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCMarketVC.swift; sourceTree = "<group>"; };
+		F5679E0221E89C2E00E91A80 /* BCMineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCMineVC.swift; sourceTree = "<group>"; };
+		F5679E0421E89C3800E91A80 /* BCStudyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCStudyVC.swift; sourceTree = "<group>"; };
 		F5EC6D2B21E47C0100844300 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5EC6D2D21E47C0100844300 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5EC6D3421E47C0300844300 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +300,7 @@
 			children = (
 				F506340121E7328300133270 /* BCBaseVC.swift */,
 				F506345421E73B3C00133270 /* BCWebVC.swift */,
+				F518713721EC6DF2008BBA80 /* BCWebVC+Refresh.swift */,
 			);
 			path = CommonVC;
 			sourceTree = "<group>";
@@ -259,6 +308,8 @@
 		F506341D21E732C200133270 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F518713B21EC8506008BBA80 /* UIAlertController+Extension.swift */,
+				F518713921EC6E8F008BBA80 /* UIScrollView+Extension.swift */,
 				F506347821E746A500133270 /* URL+Extension.swift */,
 				F506345F21E73C9A00133270 /* String+Extension.swift */,
 				F506342921E732C200133270 /* UIView+Extension.swift */,
@@ -282,10 +333,12 @@
 		F506346121E7465600133270 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				F518710821EC2809008BBA80 /* CColorConfig.swift */,
 				F50634BD21E74A9B00133270 /* CNotificationConfig.swift */,
 				F506347C21E749FB00133270 /* CNetworkConfig.h */,
 				F506347A21E7473400133270 /* CConfig.swift */,
 				F506346821E7465600133270 /* CH5-Native.swift */,
+				F518713521EC6BD6008BBA80 /* CAPI.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -293,7 +346,6 @@
 		F506347E21E74A4900133270 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F5679DEF21E848BC00E91A80 /* Share */,
 				F506349521E74A4900133270 /* User */,
 				F506349B21E74A4900133270 /* CBaseModel.swift */,
 			);
@@ -304,9 +356,71 @@
 			isa = PBXGroup;
 			children = (
 				F506349621E74A4900133270 /* BCUserModel.swift */,
-				F506349721E74A4900133270 /* BCRegionModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		F518710121EC24AD008BBA80 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F518710321EC24D1008BBA80 /* BCLoginVC.swift */,
+				F518710421EC24D1008BBA80 /* BCLoginView.swift */,
+				F518710221EC24D1008BBA80 /* BCTextField.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		F518711021EC640D008BBA80 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				F518711121EC640D008BBA80 /* Cache */,
+				F518711421EC640D008BBA80 /* Util */,
+				F518711B21EC640D008BBA80 /* Network */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		F518711121EC640D008BBA80 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F518711221EC640D008BBA80 /* CAPICacheManager.h */,
+				F518711321EC640D008BBA80 /* CAPICacheManager.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		F518711421EC640D008BBA80 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F518711821EC640D008BBA80 /* CPage.h */,
+				F518711521EC640D008BBA80 /* CPage.m */,
+				F518711A21EC640D008BBA80 /* CError.h */,
+				F518711621EC640D008BBA80 /* CError.m */,
+				F518711921EC640D008BBA80 /* CHttpFilter.h */,
+				F518711721EC640D008BBA80 /* CHttpFilter.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		F518711B21EC640D008BBA80 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F518712021EC640D008BBA80 /* CNetwork.h */,
+				F518711D21EC640D008BBA80 /* CNetwork.m */,
+				F518711E21EC640D008BBA80 /* CRequestManager.h */,
+				F518712121EC640D008BBA80 /* CRequestManager.m */,
+				F518712221EC640D008BBA80 /* CRequestParseManager.h */,
+				F518711F21EC640D008BBA80 /* CRequestParseManager.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F518713221EC6AA7008BBA80 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F518713321EC6AA7008BBA80 /* BCAuthLogic.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		F5679D8F21E8324D00E91A80 /* Component */ = {
@@ -346,19 +460,43 @@
 		F5679DBD21E8478900E91A80 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F518713221EC6AA7008BBA80 /* Auth */,
 				F5679DD221E8478900E91A80 /* BCUtilLogic.swift */,
 				F5679DD621E8478900E91A80 /* BCBaseLogic.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
 		};
-		F5679DEF21E848BC00E91A80 /* Share */ = {
+		F5679DFA21E899D300E91A80 /* PWA */ = {
 			isa = PBXGroup;
 			children = (
-				F5679DF021E848BC00E91A80 /* BCShareModel.swift */,
-				F5679DF121E848BC00E91A80 /* BCShareResultModel.swift */,
+				F5679DFB21E899F200E91A80 /* BCPWAVC.swift */,
 			);
-			path = Share;
+			path = PWA;
+			sourceTree = "<group>";
+		};
+		F5679DFD21E89B1000E91A80 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				F5679DFE21E89B2000E91A80 /* BCMarketVC.swift */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		F5679E0021E89C0A00E91A80 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				F5679E0221E89C2E00E91A80 /* BCMineVC.swift */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		F5679E0121E89C1700E91A80 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				F5679E0421E89C3800E91A80 /* BCStudyVC.swift */,
+			);
+			path = Study;
 			sourceTree = "<group>";
 		};
 		F5EC6CED21E46AD400844300 = {
@@ -415,6 +553,7 @@
 				F5679D9A21E8466700E91A80 /* Vender */,
 				F506347E21E74A4900133270 /* Model */,
 				F506346121E7465600133270 /* Config */,
+				F518711021EC640D008BBA80 /* Dao */,
 				F5EC6D7621E487B000844300 /* cine.h */,
 				F5EC6D7721E487B000844300 /* Info.plist */,
 			);
@@ -425,6 +564,11 @@
 			isa = PBXGroup;
 			children = (
 				F5EC6E7221E489C100844300 /* Home */,
+				F518710121EC24AD008BBA80 /* Auth */,
+				F5679E0121E89C1700E91A80 /* Study */,
+				F5679DFD21E89B1000E91A80 /* Market */,
+				F5679E0021E89C0A00E91A80 /* Mine */,
+				F5679DFA21E899D300E91A80 /* PWA */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -460,9 +604,16 @@
 			files = (
 				F5679DAF21E8466700E91A80 /* AliPayManager.h in Headers */,
 				F5679DB221E8466700E91A80 /* WXApiObject.h in Headers */,
+				F518713121EC640D008BBA80 /* CRequestParseManager.h in Headers */,
 				F5EC6D7821E487B000844300 /* cine.h in Headers */,
 				F5679DB421E8466700E91A80 /* WechatAuthSDK.h in Headers */,
+				F518712321EC640D008BBA80 /* CAPICacheManager.h in Headers */,
 				F506347D21E749FB00133270 /* CNetworkConfig.h in Headers */,
+				F518712D21EC640D008BBA80 /* CRequestManager.h in Headers */,
+				F518712921EC640D008BBA80 /* CHttpFilter.h in Headers */,
+				F518712821EC640D008BBA80 /* CPage.h in Headers */,
+				F518712A21EC640D008BBA80 /* CError.h in Headers */,
+				F518712F21EC640D008BBA80 /* CNetwork.h in Headers */,
 				F5679DAD21E8466700E91A80 /* WXApiManager.h in Headers */,
 				F5679DB021E8466700E91A80 /* WXApi.h in Headers */,
 			);
@@ -673,12 +824,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iPhone/Pods-iPhone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,9 +848,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5679DFF21E89B2000E91A80 /* BCMarketVC.swift in Sources */,
+				F5679E0521E89C3800E91A80 /* BCStudyVC.swift in Sources */,
+				F518710521EC24D2008BBA80 /* BCTextField.swift in Sources */,
 				F5EC6EFA21E489C100844300 /* BCHomeVC.swift in Sources */,
+				F5679E0321E89C2E00E91A80 /* BCMineVC.swift in Sources */,
 				F5EC6EFB21E489C100844300 /* BCNavigationVC.swift in Sources */,
+				F5679DFC21E899F200E91A80 /* BCPWAVC.swift in Sources */,
+				F518710721EC24D2008BBA80 /* BCLoginView.swift in Sources */,
 				F5EC6D2E21E47C0100844300 /* AppDelegate.swift in Sources */,
+				F518710621EC24D2008BBA80 /* BCLoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,29 +874,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				F506346021E73C9A00133270 /* String+Extension.swift in Sources */,
+				F518713C21EC8506008BBA80 /* UIAlertController+Extension.swift in Sources */,
 				F506345B21E73BFC00133270 /* BCH5URLProtocol+CacheFile.swift in Sources */,
+				F518712E21EC640D008BBA80 /* CRequestParseManager.m in Sources */,
 				F506345E21E73BFC00133270 /* BCH5URLProtocol+Register.swift in Sources */,
 				F5679DF621E84BB300E91A80 /* UIImage+Extension.swift in Sources */,
 				F5679DB121E8466700E91A80 /* WXApiManager.m in Sources */,
+				F518712721EC640D008BBA80 /* CHttpFilter.m in Sources */,
+				F518710921EC2809008BBA80 /* CColorConfig.swift in Sources */,
 				F506347921E746A500133270 /* URL+Extension.swift in Sources */,
 				F506345521E73B3C00133270 /* BCWebVC.swift in Sources */,
 				F5679DEC21E8478900E91A80 /* BCBaseLogic.swift in Sources */,
-				F50634B521E74A4900133270 /* BCRegionModel.swift in Sources */,
 				F50634B821E74A4900133270 /* CBaseModel.swift in Sources */,
-				F5679DF321E848BD00E91A80 /* BCShareResultModel.swift in Sources */,
+				F518713421EC6AA7008BBA80 /* BCAuthLogic.swift in Sources */,
+				F518713A21EC6E90008BBA80 /* UIScrollView+Extension.swift in Sources */,
 				F5679D9521E8324D00E91A80 /* BCProgressLayer.swift in Sources */,
 				F50634B421E74A4900133270 /* BCUserModel.swift in Sources */,
 				F506347321E7465600133270 /* CH5-Native.swift in Sources */,
 				F506344421E732C200133270 /* UIView+Extension.swift in Sources */,
 				F506341821E7328300133270 /* BCBaseVC.swift in Sources */,
+				F518713021EC640D008BBA80 /* CRequestManager.m in Sources */,
+				F518712C21EC640D008BBA80 /* CNetwork.m in Sources */,
+				F518712421EC640D008BBA80 /* CAPICacheManager.m in Sources */,
 				F50634BE21E74A9B00133270 /* CNotificationConfig.swift in Sources */,
 				F506347B21E7473400133270 /* CConfig.swift in Sources */,
-				F5679DF221E848BD00E91A80 /* BCShareModel.swift in Sources */,
 				F5679DE921E8478900E91A80 /* BCUtilLogic.swift in Sources */,
+				F518712621EC640D008BBA80 /* CError.m in Sources */,
 				F506345C21E73BFC00133270 /* BCH5URLProtocol+PostData.swift in Sources */,
 				F5679D9721E8324D00E91A80 /* BCProgressView.swift in Sources */,
 				F506345D21E73BFC00133270 /* BCH5UrlProtocol.swift in Sources */,
+				F518713621EC6BD6008BBA80 /* CAPI.swift in Sources */,
 				F5679DF721E84BB300E91A80 /* UIImage+Wechat.swift in Sources */,
+				F518712521EC640D008BBA80 /* CPage.m in Sources */,
+				F518713821EC6DF2008BBA80 /* BCWebVC+Refresh.swift in Sources */,
 				F5679DB321E8466700E91A80 /* AliPayManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

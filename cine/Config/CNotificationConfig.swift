@@ -9,3 +9,5 @@
 import Foundation
 
 public let kNotificationChangeUserStatus:Notification.Name = Notification.Name(rawValue: "kChangeUserStatusNotification")
+
+public let kNotificationShowLogin = Notification.Name.init(rawValue: "kNotificationShowLogin")

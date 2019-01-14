@@ -19,3 +19,8 @@ FOUNDATION_EXPORT const unsigned char cineVersionString[];
 #import <cine/CNetworkConfig.h>
 #import <cine/AliPayManager.h>
 #import <cine/WXApiManager.h>
+#import <cine/CRequestManager.h>
+#import <cine/CAPICacheManager.h>
+#import <cine/CHttpFilter.h>
+#import <cine/CPage.h>
+#import <cine/CError.h>

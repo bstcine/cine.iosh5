@@ -67,37 +67,22 @@ open class BCWebVC: BCBaseVC {
             self.reloadWebView()
         }
     }
+    private var isloaded:Bool = false
+    public var loadComplete:((Bool, H5_URL_PATH)->Void)?
     
     public func reloadWebView() {
         // 判断网络状态
-//        if !isIPad && BCUtilLogic.notNetwork() {
-//
-//            BCShowHUD.showMessage("网络异常")
-//
-//            return
-//        }
-        
         guard let url = URL.init(string: urlString) else{
             return
         }
         
-        let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 120)
+        let request = URLRequest(url: url)
         
         self.webView.load(request)
         
         self.beginTime = Date()
         
         self.showLoading()
-    }
-    
-    public var isCanRefresh:Bool = false {
-        didSet{
-//            if isCanRefresh {
-//                self.addFresh()
-//            }else {
-//                self.removeFresh()
-//            }
-        }
     }
     
     public var hideCount:UInt = 0
@@ -123,12 +108,18 @@ open class BCWebVC: BCBaseVC {
         
         container?.add(self, name: kNative)
         
-//        if isCanRefresh && !self.isHadFresh {
-//            self.addFresh()
-//        }
+        self.addFresh()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(freshWebView), name: kNotificationChangeUserStatus, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(webViewDisappear), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(webViewAppear), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: kNotificationChangeUserStatus, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override open func viewWillLayoutSubviews() {
@@ -155,8 +146,10 @@ open class BCWebVC: BCBaseVC {
 
 extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
     
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.dismissLoading()
+        
+        self.isloaded = true
         
         let getHref = "document.title"
         
@@ -172,7 +165,7 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
         }
         
     }
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         let policy = self.getPolicy(url: navigationAction.request.url!)
         print(policy, self.urlString)
@@ -181,26 +174,21 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
             return
         }
         decisionHandler(.cancel)
-        
-        let newVC = BCWebVC()
-        newVC.urlString = policy
-        self.navigationController?.pushViewController(newVC, animated: true)
+        let currentPath = navigationAction.request.url!.path
+        if  currentPath == H5_URL_PATH.login.rawValue ||
+            currentPath == H5_URL_PATH.signIn.rawValue {
+            NotificationCenter.default.post(name: kNotificationShowLogin, object: nil)
+            return
+        }
+        if isloaded {
+            let newVC = BCWebVC()
+            newVC.urlString = policy
+            self.navigationController?.pushViewController(newVC, animated: true)
+        }else {
+            self.urlString = policy
+        }
     }
     
-//    public func decisionHandlerAllow(url: URL) -> Bool {
-//
-//        let absoluteString = url.absoluteString.replacingOccurrences(of: "/?", with: "?")
-//        let inputString = self.urlString.replacingOccurrences(of: "/?", with: "?")
-//
-//        let absolutePath = absoluteString.split(separator: "?").first ?? ""
-//        let inputPath = inputString.split(separator: "?").first ?? ""
-//
-//        let isContainAllow = absoluteString.contains("token") || absoluteString.contains("about:blank") || !absoluteString.contains("bstcine")
-//        let isAllow = absolutePath == inputPath && url.path != "/login" && isContainAllow
-//
-//        return isAllow
-//    }
-//
     public func getPolicy(url:URL) -> String {
         let policy = url.absoluteString
 
@@ -216,59 +204,34 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
 
     }
     
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.dismissLoading()
-//        if error._code == NSURLErrorCancelled {
-//            return
-//        }else if error._code == NSURLErrorTimedOut {
-//            self.dealError(with: "network_timeout")
-//        }else {
-//            self.dealError(with: "system_error")
-//        }
     }
-//
-    public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        
+        let alertVC = UIAlertController(title: nil, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "确定", style: .default) { (_) in
+            completionHandler()
+        }
+        alertVC.addAction(action)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    public func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        let alertVC = UIAlertController(title: "", message: message, sureAction: { (_) in
+            completionHandler(true)
+        }) { (_) in
+            completionHandler(false)
+        }
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    open func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
 
         self.dismissLoading()
-//        if error._code == NSURLErrorCancelled {
-//            return
-//        }else if error._code == NSURLErrorNotConnectedToInternet {
-//            return
-//        } else if error._code == NSURLErrorTimedOut {
-//            self.dealError(with: "network_timeout")
-//        }else {
-//            self.dealError(with: "system_error")
-//        }
     }
-//
-//    public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-//
-//        BCShowHUD.showInfo(info: message) {
-//
-//            completionHandler()
-//
-//        }
-//    }
     
-//    public func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-//
-//        let completeAny = completionHandler as Any
-//
-//        let completeAlert = completeAny as? (()->Void)
-//
-//        let completePane = completeAny as? ((Bool)->Void)
-//
-//        BCShowHUD.showInfo(info: message, sureAction: {
-//            completeAlert?()
-//            completePane?(true)
-//        }) {
-//            completeAlert?()
-//            completePane?(false)
-//        }
-//
-//    }
-    
-    public func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+    open func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
         let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
 
         alertVC.addTextField { (text) in
@@ -288,7 +251,7 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
 
 extension BCWebVC:WKScriptMessageHandler {
     
-    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
         // 判断是否存在正在执行的方法，防止同时执行多个方法
         if self.currentMethod != nil {
@@ -332,6 +295,12 @@ extension BCWebVC:WKScriptMessageHandler {
             
             break
             
+        case .showPayment:
+            
+            self.gotoPay(info: self.currentData!)
+            
+            break
+            
         case .linkCourseDetail:
             
             self.showCourseDetail()
@@ -341,17 +310,6 @@ extension BCWebVC:WKScriptMessageHandler {
         case .share:
             
             self.gotoShare(shareDict: self.currentData)
-            
-            break
-            
-        case .timeline:
-            
-            guard let type = self.currentData?["type"] as? String else {
-                self.removeH5Method()
-                return
-            }
-            
-            self.calcuteLoadTime()
             
             break
             
@@ -405,7 +363,7 @@ extension BCWebVC:WKScriptMessageHandler {
             break
             
         case .paySuccess:
-//            NotificationCenter.default.post(name: kNotificationRefreshAll, object: nil)
+            
             self.isPaid = true
             self.removeH5Method()
             break
@@ -447,7 +405,33 @@ extension BCWebVC:WKScriptMessageHandler {
     @objc func gotoLearn(courseId:String, lessonId:String) {
         self.removeH5Method()
     }
-    
+    func gotoPay(info:[String:Any]) {
+        let payType = info["payType"] as? String ?? ""
+        if payType == "ali" {
+            let payUrl = info["payUrl"] as? String ?? ""
+            AliPayManager.alipay(withData: ["pay_url":payUrl], callBack: nil)
+        }else if payType == "wechat" {
+            let payObj = info["payObj"] as? [String:Any] ?? [String:Any]()
+            weak var weakSelf:BCWebVC? = self
+            WXApiManager.wechatPay(withData: payObj) { (isSuc) in
+                if isSuc {
+                    // 成功
+                    DispatchQueue.main.async {
+                        let alertVC = UIAlertController(message: "支付成功")
+                        weakSelf?.present(alertVC, animated: true, completion: nil)
+                    }
+                    
+                }else {
+                    // 失败
+                    DispatchQueue.main.async {
+                        let alertVC = UIAlertController(message: "支付失败")
+                        weakSelf?.present(alertVC, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        self.removeH5Method()
+    }
     func gotoPay(orderId:String, payType:String) {
         let callBack = self.callBack
         self.removeH5Method()
@@ -460,20 +444,20 @@ extension BCWebVC:WKScriptMessageHandler {
 //            BCPurchaseLogic.aliPay(orderId: orderId, success: { (isSuc) in
 //
 //                weakSelf?.dismissLoading()
-//                weakSelf?.invokeH5CallBack(callBack: callBack, para: [String : Any]())
+//                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //
 //            }) { (cError) in
 //                weakSelf?.dismissLoading()
-//                weakSelf?.invokeH5CallBack(callBack: callBack, para: [String : Any]())
+//                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //                weakSelf?.dealError(with: cError?.except_case_desc)
 //            }
         }else if payType == "3" {
 //            BCPurchaseLogic.wechatPay(orderId: orderId, success: { (status) in
 //                weakSelf?.dismissLoading()
-//                weakSelf?.invokeH5CallBack(callBack: callBack, para: [String : Any]())
+//                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //            }) { (cError) in
 //                weakSelf?.dismissLoading()
-//                weakSelf?.invokeH5CallBack(callBack: callBack, para: [String : Any]())
+//                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //                weakSelf?.dealError(with: cError?.except_case_desc)
 //            }
         }
@@ -609,7 +593,7 @@ extension BCWebVC {
 
         self.currentMethod = nil
 
-        self.invokeH5CallBack(para: ["wechat" : wechatInstall])
+        self.invokeH5Function(para: ["wechat" : wechatInstall])
 
         if wechatInstall == 0 {
 
@@ -670,7 +654,7 @@ extension BCWebVC {
                 WXApiManager.sharedFriend(withTitle: share_title, description: share_desc, image: image, urlString: share_link) { (result, isSuc) in
                     let shareResutl = isSuc ? 1 : 0
                     
-                    weakSelf?.invokeH5CallBack(callBack: callBack, para: ["shareSuccess":shareResutl])
+                    weakSelf?.invokeH5Function(callBack: callBack, para: ["shareSuccess":shareResutl])
                 }
             }
             
@@ -702,72 +686,31 @@ extension BCWebVC {
         self.removeH5Method()
     }
     
-    @objc public func NativeLogin() {
-        self.removeH5Method()
-        
-//        let loginVC = BCLoginVC()
-//
-//        weak var weakSelf:BCWebVC? = self
-//
-//        loginVC.loginComplete = {(isSuc) in
-//
-//            if isSuc == .success {
-//                weakSelf?.freshWebView()
-//            }else if isSuc == .cancel {
-//                weakSelf?.navigationController?.popViewController(animated: false)
-//            }
-//        }
-//        let loginNav = BCNavigationVC(rootViewController: loginVC)
-//        self.present(loginNav, animated: true, completion: nil)
-    }
-    
     /// H5调用本地登录
     public func H5_NativeLogin() {
         
-//        guard let tab = UIApplication.shared.keyWindow?.rootViewController as? BCHomeVC else {
-//
-//            return
-//        }
-//
-//        weak var weakSelf:BCWebVC? = self
-//
-//        let callBack = self.callBack
-//
-//        self.callBack = nil
-//        self.currentMethod = nil
-//
-//        tab.login { (isSuc) in
-//
-//            if !isSuc {
-//                weakSelf?.removeH5Method()
-//                return
-//            }
-//
-//            let token = BCUserModel.shared.token
-//
-//            let para = ["token":token]
-//            weakSelf?.invokeH5CallBack(callBack: callBack, para: para)
-//        }
+        NotificationCenter.default.post(name: kNotificationShowLogin, object: nil)
+        self.removeH5Method()
     }
     
     /// 调用H5回调方法
-    public func invokeH5CallBack(para:[String:Any]) {
+    public func invokeH5Function(para:[String:Any]) {
         
-        self.invokeH5CallBack(callBack: self.callBack, para: para)
+        self.invokeH5Function(callBack: self.callBack, para: para)
     }
     
-    public func invokeH5CallBack(para:[String:Any], isJson:Bool) {
+    public func invokeH5Function(para:[String:Any], isJson:Bool) {
         
-        self.invokeH5CallBack(callBack: self.callBack, para: para, isJson: isJson)
+        self.invokeH5Function(callBack: self.callBack, para: para, isJson: isJson)
         
     }
     
-    public func invokeH5CallBack(callBack:String? , para:[String:Any]) {
+    public func invokeH5Function(callBack:String? , para:[String:Any]) {
         
-        self.invokeH5CallBack(callBack: callBack, para: para, isJson: false)
+        self.invokeH5Function(callBack: callBack, para: para, isJson: false)
     }
     
-    public func invokeH5CallBack(callBack:String? , para:[String:Any], isJson:Bool) {
+    public func invokeH5Function(callBack:String? , para:[String:Any], isJson:Bool) {
         
         if callBack == nil {
             return
@@ -777,16 +720,16 @@ extension BCWebVC {
         let paraData = try! JSONSerialization.data(withJSONObject: para, options: .prettyPrinted)
         let paraString = String.init(data: paraData, encoding: .utf8)!
         
-        self.invokeH5CallBack(callBack: callBack, paraString: paraString)
+        self.invokeH5Function(callBack: callBack, paraString: paraString)
         
     }
     
-    public func invokeH5CallBack(callBack:String? , paraString:String){
+    public func invokeH5Function(callBack:String? , paraString:String){
         
-        self.invokeH5CallBack(callBack: callBack, paraString: paraString, isJson: true)
+        self.invokeH5Function(callBack: callBack, paraString: paraString, isJson: true)
     }
     
-    public func invokeH5CallBack(callBack:String? , paraString:String, isJson:Bool){
+    public func invokeH5Function(callBack:String? , paraString:String, isJson:Bool){
         
         var realString = paraString
         
@@ -796,17 +739,17 @@ extension BCWebVC {
             realString = realString.exNS.replacingOccurrences(of: "\n", with: "")
         }
         
-        self.invokeH5CallBack(callBack: callBack, realString: realString, isJson: isJson)
+        self.invokeH5Function(callBack: callBack, realString: realString, isJson: isJson)
         
     }
     
-    public func invokeH5CallBack(callBack:String? , realString:String) {
+    public func invokeH5Function(callBack:String? , realString:String) {
         
-        self.invokeH5CallBack(callBack: callBack, realString: realString, isJson: false)
+        self.invokeH5Function(callBack: callBack, realString: realString, isJson: false)
         
     }
     
-    public func invokeH5CallBack(callBack:String? , realString:String, isJson:Bool) {
+    public func invokeH5Function(callBack:String? , realString:String, isJson:Bool) {
         
         var result:String
         

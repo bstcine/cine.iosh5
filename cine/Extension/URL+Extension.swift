@@ -10,11 +10,6 @@ import Foundation
 import AVFoundation
 
 extension URL {
-    /// 判断是否为可用H5路径
-    public var isAllowWeb:Bool {
-        return self.absoluteString.isAllowWeb
-    }
-    
     /// 获取参数列表
     public var params:[String:String]? {
         return self.absoluteString.params
@@ -23,11 +18,6 @@ extension URL {
 }
 
 extension String {
-    public var isAllowWeb:Bool {
-//        let isContainAllow = self.contains("token") || self.contains("about:blank") || !self.contains("bstcine")
-//        return isContainAllow
-        return true
-    }
     /// 获取参数列表
     public var params:[String:String]? {
         // 判断是否包含参数

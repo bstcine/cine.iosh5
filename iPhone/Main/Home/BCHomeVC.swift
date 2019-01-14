@@ -15,20 +15,28 @@ class BCHomeVC: BCBaseVC {
     var tabButtons:[BCTabButton] = [BCTabButton]()
     private var lastTabButton:BCTabButton!
     private var lastVC:UIViewController!
-    let tabHeight:CGFloat = 49
+    private let tabHeight:CGFloat = 49
+    private let tabBar:BCTabBar = BCTabBar(frame: .zero)
+    private weak var loginVC:BCLoginVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(tabBar)
+        
         buildHomeUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: kNotificationShowLogin, object: nil)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        tabBar.frame = CGRect(x: 0, y: view.height-tabHeight, width: view.width, height: tabHeight)
         let buttonWidth = self.view.width / CGFloat(tabButtons.count)
         for button in tabButtons {
             let index = CGFloat(tabButtons.index(of: button)!)
-            button.frame = CGRect(x: index*buttonWidth, y: view.height-tabHeight, width: buttonWidth, height: tabHeight)
+            button.frame = CGRect(x: index*buttonWidth, y: 0, width: buttonWidth, height: tabHeight)
         }
         for childVC in children {
             childVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
@@ -37,20 +45,15 @@ class BCHomeVC: BCBaseVC {
     
     func buildHomeUI() {
         // 创建学习界面导航控制器（带学习控制器）
-        self.creatChildVC(title: "学习",tabImg: UIImage(named: "xuexi")!,tabImageSel: UIImage(named: "xuexi_blue")!, h5Type: H5_URL_PATH.market)
+        self.creatChildVC(rootVC: BCStudyVC(),title: "学习",tabImg: UIImage(named: "xuexi")!,tabImageSel: UIImage(named: "xuexi_blue")!)
         // 创建商城界面导航控制器（带商城控制器）
-        self.creatChildVC(title: "商城",tabImg: UIImage(named: "shangcheng")!,tabImageSel: UIImage(named: "shangcheng_blue")!, h5Type: .market)
+        self.creatChildVC(rootVC: BCMarketVC(),title: "商城",tabImg: UIImage(named: "shangcheng")!,tabImageSel: UIImage(named: "shangcheng_blue")!)
         // 创建用户信息界面导航控制器（带用户信息控制器）
-        self.creatChildVC(title: "我的",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!, h5Type: .market)
-        self.creatChildVC(title: "csub",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!, h5Type: .csub)
+        self.creatChildVC(rootVC: BCMineVC(),title: "我的",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
+        self.creatChildVC(rootVC: BCPWAVC(),title: "cpwa",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
     }
     // 创建一个子控制器，（导航控制器）
-    func creatChildVC(title:String,tabImg:UIImage,tabImageSel:UIImage, h5Type:H5_URL_PATH) {
-        let rootVC = BCWebVC()
-        rootVC.urlString = H5_URL_STRING(path: h5Type)
-//        rootVC.tabBarItem.title = title
-//        rootVC.tabBarItem.image = tabImg.withRenderingMode(.alwaysOriginal)
-//        rootVC.tabBarItem.selectedImage = tabImageSel.withRenderingMode(.alwaysOriginal)
+    func creatChildVC(rootVC:UIViewController, title:String,tabImg:UIImage,tabImageSel:UIImage) {
         let childVC = BCNavigationVC(rootViewController: rootVC)
         childVC.navigationBar.isHidden = true
         
@@ -75,7 +78,7 @@ class BCHomeVC: BCBaseVC {
             childVC.view.isHidden = true
         }
         self.tabButtons.append(tabButton)
-        view.addSubview(tabButton)
+        tabBar.addSubview(tabButton)
     }
     
     @objc func clickTabButton(_ tabButton:BCTabButton) {
@@ -99,29 +102,36 @@ class BCHomeVC: BCBaseVC {
         
     }
     
-    func login(){
+    @objc func showLogin() {
         
-        self.login(nil)
+        let loginVC = BCLoginVC()
+        let loginNav = BCNavigationVC(rootViewController: loginVC)
+        self.loginVC = loginVC
+        self.present(loginNav, animated: true, completion: nil)
     }
     
-    func login(_ complete:((Bool)->Void)?) {
+}
+
+class BCTabBar: UIView {
+    
+    private let line:CALayer = {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.lightGray.cgColor
+        return layer
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-//        let loginVC = BCLoginVC()
-//
-//        loginVC.loginComplete = {(status) in
-//            switch status {
-//            case .success:
-//                complete?(true)
-//                break
-//            default:
-//                complete?(false)
-//                break
-//            }
-//        }
-//
-//        let loginNav = BCNavigationVC(rootViewController: loginVC)
-//
-//        self.present(loginNav, animated: true, completion: nil)
+        layer.addSublayer(line)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        line.frame = CGRect(x: 0, y: 0, width: self.width, height: 1)
     }
     
 }
@@ -181,13 +191,14 @@ class BCTabButton: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
         addSubview(titleImageView)
         addSubview(titleLabel)
     }
     
     override func layoutSubviews() {
-        let imageSize = titleImageView.image!.size
-        titleImageView.frame = CGRect(origin: CGPoint(x: (self.width-imageSize.width)/2, y: 3), size: imageSize)
+        let imageSize = CGSize(width: 16, height: 16)
+        titleImageView.frame = CGRect(origin: CGPoint(x: (self.width-imageSize.width)/2, y: 7), size: imageSize)
         titleLabel.frame = CGRect(x: 0, y: titleImageView.frame.maxY+3, width: self.width, height: self.height - titleImageView.frame.maxY-8)
     }
     
