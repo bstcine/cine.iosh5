@@ -125,11 +125,12 @@ open class BCWebVC: BCBaseVC {
     override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        var topInstance = kNavigationBarHeight
-        if self.navigationController == nil || self.navigationController!.navigationBar.isHidden {
-            topInstance = 0
-        }
-        webView.frame = CGRect(x: 0, y: topInstance, width: self.view.width, height: self.view.height - topInstance)
+//        var topInstance = kNavigationBarHeight
+//        if self.navigationController == nil || self.navigationController!.navigationBar.isHidden {
+//            topInstance = 0
+//        }
+        webView.frame = self.view.bounds
+        print("webVC: \(webView.frame)")
     }
     
     override public func backAction() {

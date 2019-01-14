@@ -14,10 +14,35 @@ class BCHomeVC: BCBaseVC {
     var showInfo:Bool = false
     var tabButtons:[BCTabButton] = [BCTabButton]()
     private var lastTabButton:BCTabButton!
-    private var lastVC:UIViewController!
+    private var lastVC:BCNavigationVC!
     private let tabHeight:CGFloat = 49
     private let tabBar:BCTabBar = BCTabBar(frame: .zero)
     private weak var loginVC:BCLoginVC?
+    private var studyVC:BCNavigationVC = {
+        let vc = BCStudyVC()
+        let nav = BCNavigationVC(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        return nav
+    }()
+    private var marketVC:BCNavigationVC = {
+        let vc = BCMarketVC()
+        let nav = BCNavigationVC(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        return nav
+    }()
+    private var mineVC:BCNavigationVC = {
+        let vc = BCMineVC()
+        let nav = BCNavigationVC(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        return nav
+    }()
+    private var pwaVC:BCNavigationVC = {
+        let vc  = BCPWAVC()
+        let nav = BCNavigationVC(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        return nav
+    }()
+    private var highType:BCTabButton.SelectType = .market
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,27 +63,52 @@ class BCHomeVC: BCBaseVC {
             let index = CGFloat(tabButtons.index(of: button)!)
             button.frame = CGRect(x: index*buttonWidth, y: 0, width: buttonWidth, height: tabHeight)
         }
-        for childVC in children {
-            childVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
-        }
+        studyVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
+        marketVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
+        mineVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
+        pwaVC.view.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - tabHeight)
+        print(marketVC.view.frame, self.view.frame)
     }
     
     func buildHomeUI() {
         // 创建学习界面导航控制器（带学习控制器）
-        self.creatChildVC(rootVC: BCStudyVC(),title: "学习",tabImg: UIImage(named: "xuexi")!,tabImageSel: UIImage(named: "xuexi_blue")!)
+        let studyButton = self.addTabButton(title: "学习",tabImg: UIImage(named: "xuexi")!,tabImageSel: UIImage(named: "xuexi_blue")!)
         // 创建商城界面导航控制器（带商城控制器）
-        self.creatChildVC(rootVC: BCMarketVC(),title: "商城",tabImg: UIImage(named: "shangcheng")!,tabImageSel: UIImage(named: "shangcheng_blue")!)
+        let marketButton = self.addTabButton(title: "商城",tabImg: UIImage(named: "shangcheng")!,tabImageSel: UIImage(named: "shangcheng_blue")!)
         // 创建用户信息界面导航控制器（带用户信息控制器）
-        self.creatChildVC(rootVC: BCMineVC(),title: "我的",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
-        self.creatChildVC(rootVC: BCPWAVC(),title: "cpwa",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
+        let mineButton = self.addTabButton(title: "我的",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
+        let pwaButton = self.addTabButton(title: "cpwa",tabImg: UIImage(named: "wode")!,tabImageSel: UIImage(named: "wode_blue")!)
+        
+        // 创建优先级最高的控制器
+        switch self.highType {
+        case .study:
+            studyButton.setSelected(true)
+            self.lastTabButton = studyButton
+            self.lastVC = studyVC
+            break
+        case .market:
+            marketButton.setSelected(true)
+            self.lastTabButton = marketButton
+            self.lastVC = marketVC
+            break
+        case .mine:
+            mineButton.setSelected(true)
+            self.lastTabButton = mineButton
+            self.lastVC = mineVC
+            break
+        case .pwa:
+            pwaButton.setSelected(true)
+            self.lastTabButton = pwaButton
+            self.lastVC = pwaVC
+            break
+        }
+        self.lastVC.navigationBar.isHidden = true
+        self.view.addSubview(self.lastVC.view)
+        self.addChild(self.lastVC)
+//        self.viewWillLayoutSubviews()
     }
     // 创建一个子控制器，（导航控制器）
-    func creatChildVC(rootVC:UIViewController, title:String,tabImg:UIImage,tabImageSel:UIImage) {
-        let childVC = BCNavigationVC(rootViewController: rootVC)
-        childVC.navigationBar.isHidden = true
-        
-        self.view.addSubview(childVC.view)
-        self.addChild(childVC)
+    func addTabButton(title:String,tabImg:UIImage,tabImageSel:UIImage)-> BCTabButton {
         
         let tabButton = BCTabButton(frame: .zero)
         tabButton.title = title
@@ -68,17 +118,11 @@ class BCHomeVC: BCBaseVC {
         tabButton.selectTitleImage = tabImageSel
         tabButton.addTarget(self, action: #selector(clickTabButton(_:)), for: .touchUpInside)
         tabButton.tag = self.tabButtons.count
-        if self.tabButtons.count == 0 {
-            self.lastTabButton = tabButton
-            self.lastVC = childVC
-            tabButton.setSelected(true)
-            childVC.view.isHidden = false
-        }else {
-            tabButton.setSelected(false)
-            childVC.view.isHidden = true
-        }
+        let type = BCTabButton.SelectType.init(rawValue: self.tabButtons.count)
+        tabButton.selectType = type!
         self.tabButtons.append(tabButton)
         tabBar.addSubview(tabButton)
+        return tabButton
     }
     
     @objc func clickTabButton(_ tabButton:BCTabButton) {
@@ -86,20 +130,48 @@ class BCHomeVC: BCBaseVC {
         if self.lastTabButton == tabButton {
             return
         }
-        
         self.lastTabButton.setSelected(false)
         self.lastVC.view.isHidden = true
-        
         tabButton.setSelected(true)
-        
-        let index = tabButton.tag
-        
-        let vc = self.children[index]
-        vc.view.isHidden = false
-        
         self.lastTabButton = tabButton
-        self.lastVC = vc
         
+        let type = BCTabButton.SelectType.init(rawValue: tabButton.tag)!
+        switch type {
+        case .study:
+            studyVC.view.isHidden = false
+            self.lastVC = studyVC
+            if studyVC.parent == nil {
+                self.view.addSubview(studyVC.view)
+                self.addChild(studyVC)
+            }
+            break
+            
+        case .market:
+            marketVC.view.isHidden = false
+            self.lastVC = marketVC
+            if marketVC.parent == nil {
+                self.view.addSubview(marketVC.view)
+                self.addChild(marketVC)
+            }
+            break
+            
+        case .mine:
+            mineVC.view.isHidden = false
+            self.lastVC = mineVC
+            if mineVC.parent == nil {
+                self.view.addSubview(mineVC.view)
+                self.addChild(mineVC)
+            }
+            break
+        case .pwa:
+            pwaVC.view.isHidden = false
+            self.lastVC = pwaVC
+            if pwaVC.parent == nil {
+                self.view.addSubview(pwaVC.view)
+                self.addChild(pwaVC)
+            }
+            break
+        }
     }
     
     @objc func showLogin() {
@@ -137,6 +209,13 @@ class BCTabBar: UIView {
 }
 
 class BCTabButton: UIControl {
+    enum SelectType:Int {
+        case study = 0
+        case market = 1
+        case mine = 2
+        case pwa = 3
+    }
+    var selectType:SelectType = .study
     
     private let titleImageView:UIImageView = UIImageView(frame: .zero)
     private let titleLabel:UILabel = UILabel(frame: .zero)
