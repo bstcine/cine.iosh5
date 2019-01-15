@@ -33,7 +33,6 @@ extension BCWebVC {
         
         if params == nil || token == BCUserModel.shared.token {
             
-            self.showLoading()
             self.webView.reload()
             
         }else {

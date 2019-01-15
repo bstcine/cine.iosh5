@@ -18,7 +18,6 @@ public enum H5_URL_PATH:String {
     case vocabReport = "/quizvocab/reportlist" // 词汇量测试结果
     case quizCourse = "/quiz/kj"               // 课程测试
     
-    case login = "/login"                      // 登陆
     case signIn = "/auth/signin"               // 新版登录
     case allTask = "/learn/task"               // 所有任务
     case lword = "/lword"                      // 词汇学习入口

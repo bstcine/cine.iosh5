@@ -58,7 +58,7 @@ class BCTextField: UITextField {
             let rightLabel = UILabel()
             rightLabel.text = rightText!
             rightLabel.font = UIFont.systemFont(ofSize: 14)
-            rightLabel.textColor = UIColor.bcTextThirdary
+            rightLabel.textColor = UIColor.RGB(RGBValue: 0xc2c3c5)
             rightLabel.sizeToFit()
             self.leftView = rightLabel
             self.leftViewMode = .always

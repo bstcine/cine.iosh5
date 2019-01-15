@@ -15,9 +15,27 @@ class BCHomeVC: BCBaseVC {
     var tabButtons:[BCTabButton] = [BCTabButton]()
     private var lastTabButton:BCTabButton!
     private var lastVC:BCNavigationVC!
-    private let tabHeight:CGFloat = 49
+    private var tabHeight:CGFloat = 49
     private let tabBar:BCTabBar = BCTabBar(frame: .zero)
-    private weak var loginVC:BCLoginVC?
+    public var hiddenTabBar:Bool {
+        set{
+            if newValue {
+                if tabHeight != 0 {
+                    tabHeight = 0
+                    tabBar.frame = CGRect(x: 0, y: view.height-tabHeight, width: view.width, height: 0)
+                }
+            }else {
+                if tabHeight == 0 {
+                    tabHeight = 49
+                    tabBar.frame = CGRect(x: 0, y: view.height-tabHeight, width: view.width, height: 49)
+                }
+            }
+        }
+        get{
+            return tabHeight == 0
+        }
+    }
+    public weak var loginVC:BCNavigationVC?
     private var studyVC:BCNavigationVC = {
         let vc = BCStudyVC()
         let nav = BCNavigationVC(rootViewController: vc)
@@ -105,7 +123,6 @@ class BCHomeVC: BCBaseVC {
         self.lastVC.navigationBar.isHidden = true
         self.view.addSubview(self.lastVC.view)
         self.addChild(self.lastVC)
-//        self.viewWillLayoutSubviews()
     }
     // 创建一个子控制器，（导航控制器）
     func addTabButton(title:String,tabImg:UIImage,tabImageSel:UIImage)-> BCTabButton {
@@ -178,7 +195,7 @@ class BCHomeVC: BCBaseVC {
         
         let loginVC = BCLoginVC()
         let loginNav = BCNavigationVC(rootViewController: loginVC)
-        self.loginVC = loginVC
+        self.loginVC = loginNav
         self.present(loginNav, animated: true, completion: nil)
     }
     

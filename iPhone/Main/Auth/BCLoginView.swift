@@ -73,7 +73,7 @@ extension BCLoginView {
 extension UIButton {
     convenience init(title:String) {
         self.init(frame: CGRect(x: 0, y: 0, width: 500, height: 60))
-        backgroundColor = UIColor.bcTheme
+        backgroundColor = UIColor.RGB(RGBValue: 0x014292)
         setTitle(title, for: .normal)
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.darkGray, for: .highlighted)

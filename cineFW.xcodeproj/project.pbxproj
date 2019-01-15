@@ -45,7 +45,6 @@
 		F518710521EC24D2008BBA80 /* BCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710221EC24D1008BBA80 /* BCTextField.swift */; };
 		F518710621EC24D2008BBA80 /* BCLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710321EC24D1008BBA80 /* BCLoginVC.swift */; };
 		F518710721EC24D2008BBA80 /* BCLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710421EC24D1008BBA80 /* BCLoginView.swift */; };
-		F518710921EC2809008BBA80 /* CColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518710821EC2809008BBA80 /* CColorConfig.swift */; };
 		F518712321EC640D008BBA80 /* CAPICacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F518711221EC640D008BBA80 /* CAPICacheManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F518712421EC640D008BBA80 /* CAPICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711321EC640D008BBA80 /* CAPICacheManager.m */; };
 		F518712521EC640D008BBA80 /* CPage.m in Sources */ = {isa = PBXBuildFile; fileRef = F518711521EC640D008BBA80 /* CPage.m */; };
@@ -65,8 +64,6 @@
 		F518713821EC6DF2008BBA80 /* BCWebVC+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713721EC6DF2008BBA80 /* BCWebVC+Refresh.swift */; };
 		F518713A21EC6E90008BBA80 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713921EC6E8F008BBA80 /* UIScrollView+Extension.swift */; };
 		F518713C21EC8506008BBA80 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518713B21EC8506008BBA80 /* UIAlertController+Extension.swift */; };
-		F5679D9521E8324D00E91A80 /* BCProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679D9021E8324D00E91A80 /* BCProgressLayer.swift */; };
-		F5679D9721E8324D00E91A80 /* BCProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679D9221E8324D00E91A80 /* BCProgressView.swift */; };
 		F5679DAD21E8466700E91A80 /* WXApiManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F5679D9C21E8466700E91A80 /* WXApiManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5679DAE21E8466700E91A80 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5679D9D21E8466700E91A80 /* AlipaySDK.bundle */; };
 		F5679DAF21E8466700E91A80 /* AliPayManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F5679D9E21E8466700E91A80 /* AliPayManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,8 +76,6 @@
 		F5679DB621E8466700E91A80 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5679DA521E8466700E91A80 /* AlipaySDK.framework */; };
 		F5679DE921E8478900E91A80 /* BCUtilLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DD221E8478900E91A80 /* BCUtilLogic.swift */; };
 		F5679DEC21E8478900E91A80 /* BCBaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DD621E8478900E91A80 /* BCBaseLogic.swift */; };
-		F5679DF621E84BB300E91A80 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF421E84BB300E91A80 /* UIImage+Extension.swift */; };
-		F5679DF721E84BB300E91A80 /* UIImage+Wechat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DF521E84BB300E91A80 /* UIImage+Wechat.swift */; };
 		F5679DFC21E899F200E91A80 /* BCPWAVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DFB21E899F200E91A80 /* BCPWAVC.swift */; };
 		F5679DFF21E89B2000E91A80 /* BCMarketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679DFE21E89B2000E91A80 /* BCMarketVC.swift */; };
 		F5679E0321E89C2E00E91A80 /* BCMineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5679E0221E89C2E00E91A80 /* BCMineVC.swift */; };
@@ -92,6 +87,7 @@
 		F5EC6D7821E487B000844300 /* cine.h in Headers */ = {isa = PBXBuildFile; fileRef = F5EC6D7621E487B000844300 /* cine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5EC6EFA21E489C100844300 /* BCHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC6E7321E489C100844300 /* BCHomeVC.swift */; };
 		F5EC6EFB21E489C100844300 /* BCNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC6E7421E489C100844300 /* BCNavigationVC.swift */; };
+		F5F2A07821ED81D900F5977B /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2A07721ED81D900F5977B /* UIColor+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +157,6 @@
 		F518710221EC24D1008BBA80 /* BCTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCTextField.swift; sourceTree = "<group>"; };
 		F518710321EC24D1008BBA80 /* BCLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCLoginVC.swift; sourceTree = "<group>"; };
 		F518710421EC24D1008BBA80 /* BCLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCLoginView.swift; sourceTree = "<group>"; };
-		F518710821EC2809008BBA80 /* CColorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CColorConfig.swift; sourceTree = "<group>"; };
 		F518711221EC640D008BBA80 /* CAPICacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPICacheManager.h; sourceTree = "<group>"; };
 		F518711321EC640D008BBA80 /* CAPICacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPICacheManager.m; sourceTree = "<group>"; };
 		F518711521EC640D008BBA80 /* CPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPage.m; sourceTree = "<group>"; };
@@ -181,8 +176,6 @@
 		F518713721EC6DF2008BBA80 /* BCWebVC+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCWebVC+Refresh.swift"; sourceTree = "<group>"; };
 		F518713921EC6E8F008BBA80 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		F518713B21EC8506008BBA80 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
-		F5679D9021E8324D00E91A80 /* BCProgressLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCProgressLayer.swift; sourceTree = "<group>"; };
-		F5679D9221E8324D00E91A80 /* BCProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCProgressView.swift; sourceTree = "<group>"; };
 		F5679D9C21E8466700E91A80 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		F5679D9D21E8466700E91A80 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		F5679D9E21E8466700E91A80 /* AliPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayManager.h; sourceTree = "<group>"; };
@@ -195,8 +188,6 @@
 		F5679DA521E8466700E91A80 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		F5679DD221E8478900E91A80 /* BCUtilLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCUtilLogic.swift; sourceTree = "<group>"; };
 		F5679DD621E8478900E91A80 /* BCBaseLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCBaseLogic.swift; sourceTree = "<group>"; };
-		F5679DF421E84BB300E91A80 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		F5679DF521E84BB300E91A80 /* UIImage+Wechat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Wechat.swift"; sourceTree = "<group>"; };
 		F5679DFB21E899F200E91A80 /* BCPWAVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCPWAVC.swift; sourceTree = "<group>"; };
 		F5679DFE21E89B2000E91A80 /* BCMarketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCMarketVC.swift; sourceTree = "<group>"; };
 		F5679E0221E89C2E00E91A80 /* BCMineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCMineVC.swift; sourceTree = "<group>"; };
@@ -214,6 +205,7 @@
 		F5EC6D7721E487B000844300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5EC6E7321E489C100844300 /* BCHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCHomeVC.swift; sourceTree = "<group>"; };
 		F5EC6E7421E489C100844300 /* BCNavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCNavigationVC.swift; sourceTree = "<group>"; };
+		F5F2A07721ED81D900F5977B /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,8 +305,7 @@
 				F506347821E746A500133270 /* URL+Extension.swift */,
 				F506345F21E73C9A00133270 /* String+Extension.swift */,
 				F506342921E732C200133270 /* UIView+Extension.swift */,
-				F5679DF421E84BB300E91A80 /* UIImage+Extension.swift */,
-				F5679DF521E84BB300E91A80 /* UIImage+Wechat.swift */,
+				F5F2A07721ED81D900F5977B /* UIColor+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -333,7 +324,6 @@
 		F506346121E7465600133270 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F518710821EC2809008BBA80 /* CColorConfig.swift */,
 				F50634BD21E74A9B00133270 /* CNotificationConfig.swift */,
 				F506347C21E749FB00133270 /* CNetworkConfig.h */,
 				F506347A21E7473400133270 /* CConfig.swift */,
@@ -421,15 +411,6 @@
 				F518713321EC6AA7008BBA80 /* BCAuthLogic.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		F5679D8F21E8324D00E91A80 /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				F5679D9021E8324D00E91A80 /* BCProgressLayer.swift */,
-				F5679D9221E8324D00E91A80 /* BCProgressView.swift */,
-			);
-			path = Component;
 			sourceTree = "<group>";
 		};
 		F5679D9A21E8466700E91A80 /* Vender */ = {
@@ -548,7 +529,6 @@
 				F5679DBD21E8478900E91A80 /* Logic */,
 				F50633EB21E7328300133270 /* UI */,
 				F506345621E73BFC00133270 /* BCH5Protocol */,
-				F5679D8F21E8324D00E91A80 /* Component */,
 				F506341D21E732C200133270 /* Extension */,
 				F5679D9A21E8466700E91A80 /* Vender */,
 				F506347E21E74A4900133270 /* Model */,
@@ -878,17 +858,14 @@
 				F506345B21E73BFC00133270 /* BCH5URLProtocol+CacheFile.swift in Sources */,
 				F518712E21EC640D008BBA80 /* CRequestParseManager.m in Sources */,
 				F506345E21E73BFC00133270 /* BCH5URLProtocol+Register.swift in Sources */,
-				F5679DF621E84BB300E91A80 /* UIImage+Extension.swift in Sources */,
 				F5679DB121E8466700E91A80 /* WXApiManager.m in Sources */,
 				F518712721EC640D008BBA80 /* CHttpFilter.m in Sources */,
-				F518710921EC2809008BBA80 /* CColorConfig.swift in Sources */,
 				F506347921E746A500133270 /* URL+Extension.swift in Sources */,
 				F506345521E73B3C00133270 /* BCWebVC.swift in Sources */,
 				F5679DEC21E8478900E91A80 /* BCBaseLogic.swift in Sources */,
 				F50634B821E74A4900133270 /* CBaseModel.swift in Sources */,
 				F518713421EC6AA7008BBA80 /* BCAuthLogic.swift in Sources */,
 				F518713A21EC6E90008BBA80 /* UIScrollView+Extension.swift in Sources */,
-				F5679D9521E8324D00E91A80 /* BCProgressLayer.swift in Sources */,
 				F50634B421E74A4900133270 /* BCUserModel.swift in Sources */,
 				F506347321E7465600133270 /* CH5-Native.swift in Sources */,
 				F506344421E732C200133270 /* UIView+Extension.swift in Sources */,
@@ -897,14 +874,13 @@
 				F518712C21EC640D008BBA80 /* CNetwork.m in Sources */,
 				F518712421EC640D008BBA80 /* CAPICacheManager.m in Sources */,
 				F50634BE21E74A9B00133270 /* CNotificationConfig.swift in Sources */,
+				F5F2A07821ED81D900F5977B /* UIColor+extension.swift in Sources */,
 				F506347B21E7473400133270 /* CConfig.swift in Sources */,
 				F5679DE921E8478900E91A80 /* BCUtilLogic.swift in Sources */,
 				F518712621EC640D008BBA80 /* CError.m in Sources */,
 				F506345C21E73BFC00133270 /* BCH5URLProtocol+PostData.swift in Sources */,
-				F5679D9721E8324D00E91A80 /* BCProgressView.swift in Sources */,
 				F506345D21E73BFC00133270 /* BCH5UrlProtocol.swift in Sources */,
 				F518713621EC6BD6008BBA80 /* CAPI.swift in Sources */,
-				F5679DF721E84BB300E91A80 /* UIImage+Wechat.swift in Sources */,
 				F518712521EC640D008BBA80 /* CPage.m in Sources */,
 				F518713821EC6DF2008BBA80 /* BCWebVC+Refresh.swift in Sources */,
 				F5679DB321E8466700E91A80 /* AliPayManager.m in Sources */,

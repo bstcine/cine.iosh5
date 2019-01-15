@@ -56,7 +56,6 @@ open class BCWebVC: BCBaseVC {
             self.webView.loadHTMLString(
                 preHTML+htmlString, baseURL: URL.init(string: "https://www.bstcine.com"))
             
-            self.showLoading()
         }
     }
     
@@ -82,7 +81,6 @@ open class BCWebVC: BCBaseVC {
         
         self.beginTime = Date()
         
-        self.showLoading()
     }
     
     public var hideCount:UInt = 0
@@ -125,12 +123,11 @@ open class BCWebVC: BCBaseVC {
     override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-//        var topInstance = kNavigationBarHeight
-//        if self.navigationController == nil || self.navigationController!.navigationBar.isHidden {
-//            topInstance = 0
-//        }
-        webView.frame = self.view.bounds
-        print("webVC: \(webView.frame)")
+        var topInstance = kNavigationBarHeight
+        if self.navigationController == nil || self.navigationController!.navigationBar.isHidden {
+            topInstance = 0
+        }
+        webView.frame = CGRect(x: 0, y: topInstance, width: self.view.width, height: self.view.height - topInstance)
     }
     
     override public func backAction() {
@@ -148,7 +145,6 @@ open class BCWebVC: BCBaseVC {
 extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
     
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.dismissLoading()
         
         self.isloaded = true
         
@@ -176,8 +172,7 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
         }
         decisionHandler(.cancel)
         let currentPath = navigationAction.request.url!.path
-        if  currentPath == H5_URL_PATH.login.rawValue ||
-            currentPath == H5_URL_PATH.signIn.rawValue {
+        if  currentPath == H5_URL_PATH.signIn.rawValue {
             NotificationCenter.default.post(name: kNotificationShowLogin, object: nil)
             return
         }
@@ -206,7 +201,6 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
     }
     
     open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        self.dismissLoading()
     }
     public func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
@@ -229,7 +223,6 @@ extension BCWebVC:WKNavigationDelegate, WKUIDelegate {
     
     open func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
 
-        self.dismissLoading()
     }
     
     open func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
@@ -434,34 +427,30 @@ extension BCWebVC:WKScriptMessageHandler {
         self.removeH5Method()
     }
     func gotoPay(orderId:String, payType:String) {
-        let callBack = self.callBack
+//        let callBack = self.callBack
         self.removeH5Method()
-        if orderId == "" || payType == "" {
-            return
-        }
-        weak var weakSelf:BCWebVC? = self
-        self.showLoading()
-        if payType == "1" {
+//        if orderId == "" || payType == "" {
+//            return
+//        }
+//        weak var weakSelf:BCWebVC? = self
+//        self.showLoading()
+//        if payType == "1" {
 //            BCPurchaseLogic.aliPay(orderId: orderId, success: { (isSuc) in
 //
-//                weakSelf?.dismissLoading()
 //                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //
 //            }) { (cError) in
-//                weakSelf?.dismissLoading()
 //                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //                weakSelf?.dealError(with: cError?.except_case_desc)
 //            }
-        }else if payType == "3" {
+//        }else if payType == "3" {
 //            BCPurchaseLogic.wechatPay(orderId: orderId, success: { (status) in
-//                weakSelf?.dismissLoading()
 //                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //            }) { (cError) in
-//                weakSelf?.dismissLoading()
 //                weakSelf?.invokeH5Function(callBack: callBack, para: [String : Any]())
 //                weakSelf?.dealError(with: cError?.except_case_desc)
 //            }
-        }
+//        }
     }
     
     func dealWindowEvent(event:String){
@@ -585,7 +574,6 @@ extension BCWebVC {
         
         self.removeH5Method()
         
-        self.dismissLoading()
     }
     /// 发送客户端是否存在的消息
     public func setWechatClientStatus(){
@@ -598,25 +586,20 @@ extension BCWebVC {
 
         if wechatInstall == 0 {
 
-            self.dismissLoading()
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     /// H5调用本地分享方法
     public func gotoShare(shareDict:[String:Any]?) {
         
-        self.dismissLoading()
-
         OperationQueue().addOperation {
             guard let shareData = shareDict else {
                 self.removeH5Method()
-                self.dismissLoading()
                 return
             }
             
             guard let _ = shareData["sharelog_id"] as? String else {
                 self.removeH5Method()
-                self.dismissLoading()
                 return
             }
             
@@ -640,7 +623,6 @@ extension BCWebVC {
                 
                 if imageData != nil {
                     image = UIImage(data: imageData!)
-                    image = image.wechatShare
                 }
             }
             
@@ -679,8 +661,6 @@ extension BCWebVC {
         
         let webVC = BCWebVC()
         webVC.urlString = courseUrl
-        
-        webVC.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(webVC, animated: true)
         

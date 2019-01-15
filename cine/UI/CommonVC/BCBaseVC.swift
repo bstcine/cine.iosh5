@@ -15,9 +15,6 @@ open class BCBaseVC: UIViewController {
             return self.view.width > self.view.height
         }
     }
-    public var currentInputView:UIView?
-    
-    let progressView:BCProgressView = BCProgressView.createProgressView()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -27,23 +24,6 @@ open class BCBaseVC: UIViewController {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(backAction))
         }
         
-    }
-    public var isLoading:Bool = false
-    public func showLoading () {
-        if isLoading {
-            return
-        }
-        isLoading = true
-        self.view.addSubview(progressView)
-        progressView.snp.makeConstraints { (make) in
-            make.center.equalTo(self.view)
-            make.size.equalTo(self.progressView.size)
-        }
-    }
-    
-    public func dismissLoading() {
-        isLoading = false
-        self.progressView.removeFromSuperview()
     }
     
     @objc public func backAction(){

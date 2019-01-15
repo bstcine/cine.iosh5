@@ -31,7 +31,6 @@ class BCLoginVC: BCBaseVC {
         content.passwordTF.delegate = self
         
         if content.accountTF.text == nil || content.accountTF.text == "" {
-            self.currentInputView = content.accountTF
             content.accountTF.becomeFirstResponder()
         }
         
@@ -106,7 +105,6 @@ extension BCLoginVC:UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == content.accountTF {
-            self.currentInputView = textField
             content.passwordTF.becomeFirstResponder()
         }else{
             textField.resignFirstResponder()
