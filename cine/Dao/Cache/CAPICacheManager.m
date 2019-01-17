@@ -21,7 +21,7 @@ static id __cacheManager__;
     
 - (NSDictionary *)responseWithRequest:(CHttpFilter *)httpFilter {
     
-    return [self checkResponsWithUrl:httpFilter.path userId:[BCUserModel sharedModel].userId httpKey:httpFilter.requestKey];
+    return [self checkResponsWithUrl:httpFilter.path userId:[BCAuthLogic getUserModel].userId httpKey:httpFilter.requestKey];
 }
 - (BOOL)saveResponse:(NSDictionary *)response
          withRequest:(CHttpFilter *)httpFilter {
@@ -36,7 +36,7 @@ static id __cacheManager__;
     
     NSString *currentTime = [self getCurrentTime];
     
-    BOOL isSaved = [self saveResponseWithUrl:httpFilter.path userId:[BCUserModel sharedModel].userId httpKey:httpFilter.requestKey index:0 size:size responseText:text creat_at:currentTime update_at:currentTime];
+    BOOL isSaved = [self saveResponseWithUrl:httpFilter.path userId:[BCAuthLogic getUserModel].userId httpKey:httpFilter.requestKey index:0 size:size responseText:text creat_at:currentTime update_at:currentTime];
     
     return isSaved;
 }

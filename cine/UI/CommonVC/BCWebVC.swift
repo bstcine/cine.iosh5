@@ -289,6 +289,12 @@ extension BCWebVC:WKScriptMessageHandler {
             
             break
             
+        case .auth:
+            
+            self.updateAuth()
+            
+            break
+            
         case .showPayment:
             
             self.gotoPay(info: self.currentData!)
@@ -671,6 +677,15 @@ extension BCWebVC {
     public func H5_NativeLogin() {
         
         NotificationCenter.default.post(name: kNotificationShowLogin, object: nil)
+        self.removeH5Method()
+    }
+    
+    /// H5更新本地权限信息
+    public func updateAuth() {
+        
+        if let info = self.currentData {
+            BCAuthLogic.setAuthInfo(info)
+        }
         self.removeH5Method()
     }
     

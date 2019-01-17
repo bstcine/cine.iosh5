@@ -31,7 +31,7 @@ extension BCWebVC {
         let params = self.urlString.params
         let token = params?["token"] ??  ""
         
-        if params == nil || token == BCUserModel.shared.token {
+        if params == nil || token == BCAuthLogic.getUserModel().token {
             
             self.webView.reload()
             
@@ -45,7 +45,7 @@ extension BCWebVC {
             for (key,value) in params! {
                 var value = value
                 if key == "token" {
-                    value = BCUserModel.shared.token
+                    value = BCAuthLogic.getUserModel().token
                     hadToken = true
                 }
                 if newUrlString.contains("?") {
@@ -55,7 +55,7 @@ extension BCWebVC {
                 }
             }
             if !hadToken {
-                newUrlString = "\(newUrlString)&token=\(BCUserModel.shared.token)"
+                newUrlString = "\(newUrlString)&token=\(BCAuthLogic.getUserModel().token)"
             }
             
             self.urlString = newUrlString

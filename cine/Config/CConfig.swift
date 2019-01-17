@@ -11,7 +11,7 @@ import UIKit
 /// 通用参数（token,sitecode）
 public var commonPara:String {
     get{
-        let para = String.init(format: "token=%@&sitecode=cine.ios.iphone", BCUserModel.shared.token)
+        let para = String.init(format: "token=%@&sitecode=cine.ios.iphone", BCAuthLogic.getUserModel().token)
         return para
     }
 }

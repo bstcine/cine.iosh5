@@ -14,9 +14,9 @@ class BCLoginView: UIScrollView {
     private let logoView = UIImageView(image: UIImage(named: "logo_about")!)   // logo 视图
     let accountTF:BCTextField = {
         let accountTF = BCTextField(frame: .zero, placeHolder: "请输入手机号或用户名", leftIcon: UIImage(named: "ico_user")!)
-        accountTF.text = BCUserModel.shared.userName
+        accountTF.text = BCAuthLogic.getUserModel().userName
         
-        accountTF.rightView?.isHidden = BCUserModel.shared.userName == ""
+        accountTF.rightView?.isHidden = BCAuthLogic.getUserModel().userName == ""
         
         accountTF.returnKeyType = .next
         return accountTF

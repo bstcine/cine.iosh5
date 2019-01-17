@@ -16,6 +16,8 @@ public class BCUtilLogic: NSObject {
         /// 向 wechatsdk注册 appId
         BCUtilLogic.registerWechat(appId: "wx249c741c50a289a0")
         
+        /// 启动userModle
+        BCAuthLogic.startAutInfo()
     }
     
     /// 注册微信 appId

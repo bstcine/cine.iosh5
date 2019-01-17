@@ -10,16 +10,40 @@ import UIKit
 
 public class BCAuthLogic:BCBaseLogic {
     
+    private static let userModel:BCUserModel = BCUserModel()
+    @objc public class func getUserModel()->BCUserModel {
+        return userModel
+    }
+    
+    public class func setAuthInfo(_ info:[String:Any]) {
+        let userDict = info["user"] as! [String:Any]
+        userModel.setValuesForKeys(userDict)
+        
+        userModel.token = info["token"] as? String ?? ""
+        if userModel.userId == "" {
+            userModel.userId = "BestcineEducation"
+        }
+        NotificationCenter.default.post(name: kNotificationChangeUserStatus, object: nil)
+        self.updateCache()
+    }
+    private class func updateCache() {
+        UserDefaults.standard.set(userModel.token, forKey: "BSTCINE_TOKEN")
+        UserDefaults.standard.set(userModel.userName, forKey: "BSTCINE_USERNAME")
+        UserDefaults.standard.set(userModel.login, forKey: "BESTCINE_LOGIN")
+        UserDefaults.standard.set(userModel.userId, forKey: "BESTCINE_USERID")
+    }
+    public class func startAutInfo () {
+        userModel.token = UserDefaults.standard.string(forKey: "BSTCINE_TOKEN") ?? ""
+        userModel.userName = UserDefaults.standard.string(forKey: "BSTCINE_USERNAME") ?? ""
+        userModel.userId = UserDefaults.standard.string(forKey: "BESTCINE_USERID") ?? "BestcineEducation"
+        userModel.login = UserDefaults.standard.string(forKey: "BESTCINE_LOGIN") ?? ""
+    }
+    
     /// 登出账户
     public class func signOut(){
         
-        BCUserModel.shared.token = ""
-        BCUserModel.shared.userId = ""
-    }
-    /// 登入账户
-    public class func signIn(){
-        
-        
+        userModel.token = ""
+        userModel.userId = ""
     }
     
     /// 登录
@@ -38,10 +62,7 @@ public class BCAuthLogic:BCBaseLogic {
                 return
             }
             
-            let userDict = resultDict["user"] as! [String:Any]
-            BCUserModel.shared.setValuesForKeys(userDict)
-            
-            BCUserModel.shared.token = resultDict["token"] as? String ?? ""
+            self.setAuthInfo(resultDict)
             
             success(true)
             

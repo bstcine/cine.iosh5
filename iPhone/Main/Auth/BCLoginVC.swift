@@ -51,7 +51,7 @@ class BCLoginVC: BCBaseVC {
             
             if isSuccess {
                 
-                BCUserModel.shared.userName = weakSelf!.content.accountTF.text!
+                BCAuthLogic.getUserModel().userName = weakSelf!.content.accountTF.text!
                 weakSelf?.content.passwordTF.resignFirstResponder()
                 
                 weakSelf?.loginComplete?(true)

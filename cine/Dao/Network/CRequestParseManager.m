@@ -24,7 +24,7 @@
     }else if([_appDevice isEqualToString:@"iPad"]){
         _sitecode = @"cine.ios.ipad";
     }
-    NSString * _token = [BCUserModel sharedModel].token;
+    NSString * _token = [BCAuthLogic getUserModel].token;
     NSString * _channel = @"";
     NSString * _locate = @"ch";
     

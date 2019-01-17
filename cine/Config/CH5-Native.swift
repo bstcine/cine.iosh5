@@ -63,6 +63,7 @@ public enum H5InvokeNativeFunction:String {
     case paySuccess = "order_pay_success"
     case play = "play"
     case learn = "learn"
+    case auth = "update_auth"
 }
 public enum NativeInvokeH5Func:String {
     case unknow = "-1"
