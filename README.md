@@ -3,8 +3,14 @@ swift + h5
 
 下载准备
 =======
-1. 安装homebrew
-2. 安装cocoapods
+1. 安装homebrew，如果已经安装过，则跳过此步骤
+```
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+2. 安装cocoapods，如果已经安装过，则跳过此步骤
+```
+$ brew install cocoapods
+```
 
 下载项目
 =======
