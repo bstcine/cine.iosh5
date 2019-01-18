@@ -8,10 +8,12 @@ swift + h5
 
 下载项目
 =======
+```
 $ git clone https://github.com/bstcine/cine.iosh5.git
 $ cd cine.iosh5
 $ pod install
 $ open cine.iosh5.xcworkspace
+```
 
 启动项目
 =======
