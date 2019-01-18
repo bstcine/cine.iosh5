@@ -684,7 +684,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F5EC6CF121E46AD400844300 /* Build configuration list for PBXProject "cineFW" */;
+			buildConfigurationList = F5EC6CF121E46AD400844300 /* Build configuration list for PBXProject "cine.iosh5" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1195,7 +1195,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5EC6CF121E46AD400844300 /* Build configuration list for PBXProject "cineFW" */ = {
+		F5EC6CF121E46AD400844300 /* Build configuration list for PBXProject "cine.iosh5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5EC6D1C21E46AD700844300 /* Debug */,
