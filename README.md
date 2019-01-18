@@ -31,6 +31,10 @@ $ open cine.iosh5.xcworkspace
     3. 解压缩后，选择 /IOS/AlipaySDK.bundle, /IOS/AlipaySDK.framework 两个文件，
        拷贝到 /cine/Vender/Payment/ 文件夹中
     ```
+  ### 3. 运行
+  ```
+  command+r
+  ```
 
 问题
 =======
