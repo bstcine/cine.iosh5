@@ -34,7 +34,7 @@ $ open cine.iosh5.xcworkspace
   
   > 1.1. 前往微信开放平台[下载SDK](https://res.wx.qq.com/op_res/ANdzDfT57ILG_m1gEt1Pw-3Mm1NCkbcwxoDnGK8MsXU6d7O_NBGLuGZ18CnXQSi9)
   >
-  > 1.2. 解压缩文件，将libWeChatSDK.a 拷贝到 /cine/Vender/Payment/ 文件夹中
+  > 1.2. 解压缩文件，将libWeChatSDK.a 拷贝到 ${project}/cine/Vender/Payment/ 文件夹中
   >
     
   ### 2. 安装 alipay 相关SDK
@@ -44,7 +44,7 @@ $ open cine.iosh5.xcworkspace
   > 2. 解压缩后，进入 WS_APP_PAY_SDK_BASE/demo 文件夹，解压iOSDemo_2.0(SDK_15.5.9).zip，
   >
   > 3. 继续进入 iOSDemo_2.0(SDK_15.5.9) 文件夹，选中 AlipaySDK.bundle，AlipaySDK.framework 两个包文件，
-  >    将两个文件拖拽到 /cine/Vender/Payment/ 文件夹中。
+  >    将两个文件拖拽到 ${project}/cine/Vender/Payment/ 文件夹中。
   > 
        
   
