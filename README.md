@@ -69,9 +69,5 @@ $ open cine.iosh5.xcworkspace
     每个id只能注册一个iPhone项目(bundleId)，和一个iPad项目(bundleId)，
     所以为了能够正常的使用微信分享和支付功能，只能选择与cine.ios项目相同的bundleId
     ```
-    
-  ## 2. 编译报错
-    ```
-    1. linker command
-    ```
+
     
