@@ -26,9 +26,9 @@ $ open cine.iosh5.xcworkspace
   
   ### 1. 安装 wechat.sdk
   
-    1.1. [前往微信开放平台](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&lang=zh_CN)
-    1.2. 点击“iOS开发工具包（包含支付功能）”，下载资源文件
-    1.3. 解压缩文件，将libWeChatSDK.a 拷贝到 /cine/Vender/Payment/ 文件夹中
+  > 1.1. [前往微信开放平台](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&lang=zh_CN)
+  > 1.2. 点击“iOS开发工具包（包含支付功能）”，下载资源文件
+  > 1.3. 解压缩文件，将libWeChatSDK.a 拷贝到 /cine/Vender/Payment/ 文件夹中
     
   ### 2. 安装 alipay 相关SDK
     ```
